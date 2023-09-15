@@ -98,7 +98,9 @@ function App() {
   useEffect(() => {
     fetch(import.meta.env.VITE_URL)
       .then((res) => res.json())
-      .then((data) => dispatch({ type: "dataReceived", payload: data }))
+      .then(
+        (data) => dispatch({ type: "dataReceived", payload: data.questions }) // payload: data
+      ) // data.questions for deployment only
       .catch(() => dispatch({ type: "fetchFailed" }));
   }, []);
   return (
