@@ -96,7 +96,7 @@ function App() {
   const maxPoints = questions.reduce((prev, curr) => prev + curr.points, 0);
 
   useEffect(() => {
-    fetch("http://localhost:8000/questions")
+    fetch(import.meta.env.VITE_URL)
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataReceived", payload: data }))
       .catch(() => dispatch({ type: "fetchFailed" }));
